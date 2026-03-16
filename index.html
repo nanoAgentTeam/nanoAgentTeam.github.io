@@ -429,15 +429,15 @@
     /* ── TEAM ── */
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
     }
 
     .team-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 32px;
+      padding: 20px 16px;
       text-align: center;
       text-decoration: none;
       color: inherit;
@@ -451,13 +451,17 @@
     }
 
     .team-avatar {
-      width: 80px;
-      height: 80px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      margin: 0 auto 16px;
+      margin: 0 auto 12px;
       border: 2px solid var(--border);
       overflow: hidden;
       transition: border-color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-primary);
     }
 
     .team-card:hover .team-avatar { border-color: var(--accent); }
@@ -468,41 +472,38 @@
       object-fit: cover;
     }
 
+    .team-avatar .initials {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
     .team-name {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .team-role {
+      font-size: 11px;
+      color: var(--accent);
       margin-bottom: 4px;
+      font-weight: 500;
     }
 
     .team-handle {
       color: var(--text-muted);
-      font-size: 13px;
-      margin-bottom: 12px;
+      font-size: 12px;
+      margin-bottom: 8px;
     }
 
     .team-bio {
       color: var(--text-secondary);
-      font-size: 13px;
-      line-height: 1.5;
-      margin-bottom: 16px;
-      min-height: 20px;
-    }
-
-    .team-projects {
-      display: flex;
-      gap: 6px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .team-proj-tag {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: var(--bg-primary);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
+      font-size: 12px;
+      line-height: 1.4;
+      min-height: 0;
     }
 
     /* ── FOOTER ── */
@@ -545,7 +546,7 @@
       .project-card { grid-template-columns: 1fr; }
       .project-arrow { display: none; }
       .evo-content { grid-template-columns: 1fr; gap: 40px; }
-      .team-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     html { scroll-behavior: smooth; }
@@ -603,27 +604,6 @@
     </p>
     <div class="projects-list">
 
-      <!-- nano_agent_team -->
-      <a href="https://github.com/zczc/nano_agent_team" class="project-card" target="_blank">
-        <div class="project-info">
-          <div class="project-header">
-            <span class="project-name">nano_agent_team</span>
-            <span class="project-tag core">Core Framework</span>
-          </div>
-          <p class="desc">
-            A lightweight multi-agent collaboration framework. Supports team-based agent orchestration with middleware pipelines, extensible tool registry, inter-agent communication, and a rich terminal UI. The foundation everything else is built on.
-          </p>
-          <div class="project-meta">
-            <span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="12" r="6"/></svg>
-              Python
-            </span>
-            <span>zczc/nano_agent_team</span>
-          </div>
-        </div>
-        <span class="project-arrow">&rarr;</span>
-      </a>
-
       <!-- Open Research Claw -->
       <a href="https://github.com/nanoAgentTeam/open-overleaf-claw" class="project-card" target="_blank">
         <div class="project-info">
@@ -640,6 +620,27 @@
               Python
             </span>
             <span>nanoAgentTeam/open-overleaf-claw</span>
+          </div>
+        </div>
+        <span class="project-arrow">&rarr;</span>
+      </a>
+
+      <!-- nano_agent_team -->
+      <a href="https://github.com/zczc/nano_agent_team" class="project-card" target="_blank">
+        <div class="project-info">
+          <div class="project-header">
+            <span class="project-name">nano_agent_team</span>
+            <span class="project-tag core">Core Framework</span>
+          </div>
+          <p class="desc">
+            A lightweight multi-agent collaboration framework. Supports team-based agent orchestration with middleware pipelines, extensible tool registry, inter-agent communication, and a rich terminal UI. The foundation everything else is built on.
+          </p>
+          <div class="project-meta">
+            <span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="12" r="6"/></svg>
+              Python
+            </span>
+            <span>zczc/nano_agent_team</span>
           </div>
         </div>
         <span class="project-arrow">&rarr;</span>
@@ -739,27 +740,8 @@
           <img src="https://avatars.githubusercontent.com/u/4930567?v=4" alt="zczc" loading="lazy">
         </div>
         <div class="team-name">zczc</div>
+        <div class="team-role">Initiator</div>
         <div class="team-handle">@zczc</div>
-        <div class="team-bio">&nbsp;</div>
-        <div class="team-projects">
-          <span class="team-proj-tag">nano_agent_team</span>
-          <span class="team-proj-tag">selfevolve</span>
-          <span class="team-proj-tag">research claw</span>
-        </div>
-      </a>
-
-      <a href="https://github.com/poketjomon" class="team-card" target="_blank">
-        <div class="team-avatar">
-          <img src="https://avatars.githubusercontent.com/u/53850364?v=4" alt="Poketjomon" loading="lazy">
-        </div>
-        <div class="team-name">Poketjomon</div>
-        <div class="team-handle">@poketjomon</div>
-        <div class="team-bio">I am Poketjomon</div>
-        <div class="team-projects">
-          <span class="team-proj-tag">nano_agent_team</span>
-          <span class="team-proj-tag">selfevolve</span>
-          <span class="team-proj-tag">research claw</span>
-        </div>
       </a>
 
       <a href="https://github.com/PPPP-kaqiu" class="team-card" target="_blank">
@@ -767,12 +749,27 @@
           <img src="https://avatars.githubusercontent.com/u/71961808?v=4" alt="pppp卡丘" loading="lazy">
         </div>
         <div class="team-name">pppp卡丘</div>
+        <div class="team-role">Contributor</div>
         <div class="team-handle">@PPPP-kaqiu</div>
-        <div class="team-bio">LLM Full-Stack &amp; Beyond</div>
-        <div class="team-projects">
-          <span class="team-proj-tag">nano_agent_team</span>
-        </div>
       </a>
+
+      <a href="https://github.com/poketjomon" class="team-card" target="_blank">
+        <div class="team-avatar">
+          <img src="https://avatars.githubusercontent.com/u/53850364?v=4" alt="Poketjomon" loading="lazy">
+        </div>
+        <div class="team-name">Poketjomon</div>
+        <div class="team-role">Contributor</div>
+        <div class="team-handle">@poketjomon</div>
+      </a>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <span class="initials">CQ</span>
+        </div>
+        <div class="team-name">Chuan Qin</div>
+        <div class="team-role">Contributor</div>
+        <div class="team-handle">&nbsp;</div>
+      </div>
 
     </div>
   </div>
