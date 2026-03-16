@@ -243,149 +243,140 @@
       line-height: 1.7;
     }
 
-    /* ── PROJECTS ── */
-    .projects-list {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.3s;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 16px;
-      align-items: start;
-    }
-
-    .project-card:hover {
-      border-color: rgba(56, 189, 248, 0.3);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .project-info { display: flex; flex-direction: column; gap: 12px; }
-
-    .project-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .project-name {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .project-tag {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      white-space: nowrap;
-    }
-
-    .project-tag.core {
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--accent);
-    }
-
-    .project-tag.app {
-      background: rgba(74, 222, 128, 0.15);
-      color: var(--green);
-    }
-
-    .project-tag.experiment {
-      background: rgba(167, 139, 250, 0.15);
-      color: var(--purple);
-    }
-
-    .project-card .desc {
-      color: var(--text-secondary);
-      font-size: 14px;
-      line-height: 1.7;
-      max-width: 700px;
-    }
-
-    .project-meta {
-      display: flex;
-      gap: 20px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .project-meta span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .project-arrow {
-      color: var(--text-muted);
-      font-size: 20px;
-      align-self: center;
-      transition: color 0.2s;
-    }
-
-    .project-card:hover .project-arrow { color: var(--accent); }
-
-    /* ── EVOLUTION HIGHLIGHT ── */
-    .evo-section {
-      background: var(--bg-secondary);
+    /* ── PROJECT SHOWCASE ── */
+    .showcase {
       border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
     }
 
-    .evo-content {
+    .showcase.alt {
+      background: var(--bg-secondary);
+    }
+
+    .showcase-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
       align-items: center;
     }
 
-    .evo-text .section-desc { margin-bottom: 32px; }
-
-    .evo-highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+    .showcase-content.reverse {
+      direction: rtl;
     }
 
-    .evo-highlight {
+    .showcase-content.reverse > * {
+      direction: ltr;
+    }
+
+    .showcase-text .section-desc { margin-bottom: 28px; }
+
+    .showcase-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .showcase-tag.app { background: rgba(74, 222, 128, 0.15); color: var(--green); }
+    .showcase-tag.framework { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+    .showcase-tag.experiment { background: rgba(167, 139, 250, 0.15); color: var(--purple); }
+
+    .showcase-features {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .showcase-feat {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
       font-size: 14px;
       color: var(--text-secondary);
       line-height: 1.6;
     }
 
-    .evo-highlight .icon {
+    .showcase-feat .icon {
       flex-shrink: 0;
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: 12px;
       margin-top: 2px;
     }
 
-    .evo-highlight .icon.blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
-    .evo-highlight .icon.green { background: rgba(74, 222, 128, 0.15); color: var(--green); }
-    .evo-highlight .icon.purple { background: rgba(167, 139, 250, 0.15); color: var(--purple); }
+    .showcase-feat .icon.green { background: rgba(74, 222, 128, 0.15); color: var(--green); }
+    .showcase-feat .icon.blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+    .showcase-feat .icon.purple { background: rgba(167, 139, 250, 0.15); color: var(--purple); }
+    .showcase-feat .icon.orange { background: rgba(251, 146, 60, 0.15); color: var(--orange); }
+
+    .showcase-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+
+    .showcase-link:hover { gap: 10px; }
+
+    /* Chat mockup */
+    .chat-mockup {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .chat-mockup .terminal-header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chat-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .chat-msg {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 10px;
+    }
+
+    .chat-msg.user {
+      align-self: flex-end;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--text-primary);
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-msg.bot {
+      align-self: flex-start;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      border-bottom-left-radius: 4px;
+    }
+
+    .chat-msg.bot .status { color: var(--green); }
 
     /* Terminal */
     .terminal {
@@ -543,9 +534,7 @@
       .nav-links { display: none; }
       .hero { padding: 130px 0 60px; }
       section { padding: 60px 0; }
-      .project-card { grid-template-columns: 1fr; }
-      .project-arrow { display: none; }
-      .evo-content { grid-template-columns: 1fr; gap: 40px; }
+      .showcase-content, .showcase-content.reverse { grid-template-columns: 1fr; direction: ltr; gap: 40px; }
       .team-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
@@ -559,7 +548,8 @@
   <div class="container">
     <a href="#" class="nav-brand">nano<span>AgentTeam</span></a>
     <div class="nav-links">
-      <a href="#projects">Projects</a>
+      <a href="#projects">Research Claw</a>
+      <a href="#framework">Framework</a>
       <a href="#evolution">Evolution</a>
       <a href="#team">Team</a>
     </div>
@@ -594,107 +584,139 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
+<!-- ═══ PROJECT: Open Research Claw ═══ -->
+<section id="projects" class="showcase">
   <div class="container">
-    <div class="section-label">Projects</div>
-    <h2 class="section-title">What We're Building</h2>
-    <p class="section-desc">
-      AI-powered research tools, agent frameworks, and experiments that test the limits of autonomous systems. Everything is open source.
-    </p>
-    <div class="projects-list">
-
-      <!-- Open Research Claw -->
-      <a href="https://github.com/nanoAgentTeam/open-overleaf-claw" class="project-card" target="_blank">
-        <div class="project-info">
-          <div class="project-header">
-            <span class="project-name">Open Research Claw</span>
-            <span class="project-tag app">Application</span>
+    <div class="showcase-content">
+      <div class="showcase-text">
+        <span class="showcase-tag app">Application</span>
+        <h2 class="section-title">Open Research Claw</h2>
+        <p class="section-desc">
+          Your personal AI research assistant. Manages LaTeX projects, syncs with Overleaf, searches literature, tracks conference deadlines &mdash; and responds wherever you are.
+        </p>
+        <div class="showcase-features">
+          <div class="showcase-feat">
+            <span class="icon green">&#x270e;</span>
+            <span><strong>Write</strong> &mdash; Create and manage LaTeX projects with AI-assisted drafting and compilation.</span>
           </div>
-          <p class="desc">
-            AI-powered academic research assistant. Manages LaTeX projects, syncs with Overleaf, searches literature, tracks conference deadlines &mdash; responds on CLI, Web UI, Telegram, Feishu, DingTalk, and more. Your personal research claw.
-          </p>
-          <div class="project-meta">
-            <span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--green)"><circle cx="12" cy="12" r="6"/></svg>
-              Python
-            </span>
-            <span>nanoAgentTeam/open-overleaf-claw</span>
+          <div class="showcase-feat">
+            <span class="icon blue">&#x1f50d;</span>
+            <span><strong>Research</strong> &mdash; Search arXiv and literature databases, auto-generate citations and related work.</span>
           </div>
-        </div>
-        <span class="project-arrow">&rarr;</span>
-      </a>
-
-      <!-- nano_agent_team -->
-      <a href="https://github.com/zczc/nano_agent_team" class="project-card" target="_blank">
-        <div class="project-info">
-          <div class="project-header">
-            <span class="project-name">nano_agent_team</span>
-            <span class="project-tag core">Framework</span>
+          <div class="showcase-feat">
+            <span class="icon purple">&#x1f504;</span>
+            <span><strong>Sync</strong> &mdash; Two-way Overleaf sync, Git version control, multi-device access.</span>
           </div>
-          <p class="desc">
-            A lightweight multi-agent collaboration framework born from our research. Designed as a testbed for exploring agent orchestration, tool use, inter-agent communication, and autonomous workflows.
-          </p>
-          <div class="project-meta">
-            <span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="12" r="6"/></svg>
-              Python
-            </span>
-            <span>zczc/nano_agent_team</span>
+          <div class="showcase-feat">
+            <span class="icon orange">&#x1f4ac;</span>
+            <span><strong>Chat</strong> &mdash; CLI, Web UI, Telegram, Feishu, DingTalk, QQ &mdash; talk to it on any channel.</span>
           </div>
         </div>
-        <span class="project-arrow">&rarr;</span>
-      </a>
-
-      <!-- selfevolve -->
-      <a href="https://github.com/nanoAgentTeam/nano_agent_team_selfevolve" class="project-card" target="_blank">
-        <div class="project-info">
-          <div class="project-header">
-            <span class="project-name">nano_agent_team_selfevolve</span>
-            <span class="project-tag experiment">Experiment</span>
-          </div>
-          <p class="desc">
-            Can agents improve themselves? This experiment extends nano_agent_team with an unattended self-evolution loop &mdash; agents analyze their own codebase, propose features, implement, test, and commit autonomously.
-          </p>
-          <div class="project-meta">
-            <span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--purple)"><circle cx="12" cy="12" r="6"/></svg>
-              Python
-            </span>
-            <span>nanoAgentTeam/nano_agent_team_selfevolve</span>
-          </div>
+        <a href="https://github.com/nanoAgentTeam/open-overleaf-claw" class="showcase-link" target="_blank">
+          View on GitHub &rarr;
+        </a>
+      </div>
+      <div class="chat-mockup">
+        <div class="terminal-header">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
         </div>
-        <span class="project-arrow">&rarr;</span>
-      </a>
-
+        <div class="chat-body">
+          <div class="chat-msg user">Create a paper project "MoE-Survey" and link it to Overleaf.</div>
+          <div class="chat-msg bot"><span class="status">&#x2713;</span> Project created. Overleaf linked. Switched to MoE-Survey.</div>
+          <div class="chat-msg user">Research the latest MoE papers and draft an introduction.</div>
+          <div class="chat-msg bot">Searching arXiv... found 23 relevant papers. Writing introduction... <span class="status">&#x2713;</span> Compiled successfully.</div>
+          <div class="chat-msg user">/sync push</div>
+          <div class="chat-msg bot"><span class="status">&#x2713;</span> Pushed 3 files to Overleaf.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- EVOLUTION -->
-<section id="evolution" class="evo-section">
+<!-- ═══ PROJECT: nano_agent_team ═══ -->
+<section id="framework" class="showcase alt">
   <div class="container">
-    <div class="evo-content">
-      <div class="evo-text">
-        <div class="section-label">Experiment</div>
+    <div class="showcase-content reverse">
+      <div class="showcase-text">
+        <span class="showcase-tag framework">Framework</span>
+        <h2 class="section-title">nano_agent_team</h2>
+        <p class="section-desc">
+          A lightweight multi-agent collaboration framework born from our research. A testbed for exploring agent orchestration, tool use, inter-agent communication, and autonomous workflows.
+        </p>
+        <div class="showcase-features">
+          <div class="showcase-feat">
+            <span class="icon blue">&#x1f3ad;</span>
+            <span><strong>Agent Teams</strong> &mdash; Define specialized agents with roles, then let them collaborate on complex tasks.</span>
+          </div>
+          <div class="showcase-feat">
+            <span class="icon green">&#x1f527;</span>
+            <span><strong>Tool Registry</strong> &mdash; Modular tool system with auto-discovery. Easy to add, easy to extend.</span>
+          </div>
+          <div class="showcase-feat">
+            <span class="icon purple">&#x1f300;</span>
+            <span><strong>Middleware</strong> &mdash; Pluggable pipeline for logging, routing, guardrails, and custom logic between agents.</span>
+          </div>
+          <div class="showcase-feat">
+            <span class="icon orange">&#x1f5a5;</span>
+            <span><strong>Terminal UI</strong> &mdash; Rich TUI with slash commands, live monitoring, session management, and interactive debugging.</span>
+          </div>
+        </div>
+        <a href="https://github.com/zczc/nano_agent_team" class="showcase-link" target="_blank">
+          View on GitHub &rarr;
+        </a>
+      </div>
+      <div class="terminal">
+        <div class="terminal-header">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+        </div>
+        <div class="terminal-body">
+          <div><span class="prompt">$</span> <span class="cmd">python main.py "Analyze this repo"</span></div>
+          <div>&nbsp;</div>
+          <div><span class="output">[Coordinator]</span> Delegating to team...</div>
+          <div><span class="output">[Researcher]</span> Scanning project structure</div>
+          <div><span class="output">[Researcher]</span> Found 12 modules, 3 entry points</div>
+          <div><span class="output">[Analyst]</span> Running dependency analysis</div>
+          <div><span class="output">[Analyst]</span> No circular deps detected</div>
+          <div><span class="output">[Writer]</span> Generating summary report...</div>
+          <div>&nbsp;</div>
+          <div><span class="comment"># agents collaborating in real-time</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECT: selfevolve ═══ -->
+<section id="evolution" class="showcase">
+  <div class="container">
+    <div class="showcase-content">
+      <div class="showcase-text">
+        <span class="showcase-tag experiment">Experiment</span>
         <h2 class="section-title">Self-Evolving Agents</h2>
         <p class="section-desc">
-          What happens when you let an agent team improve itself? We run unattended evolution sessions where agents analyze gaps in their own framework, propose features, implement and test them autonomously.
+          Can agents improve themselves? We run unattended evolution sessions where agents analyze gaps in their own framework, propose features, implement and test them autonomously.
         </p>
-        <div class="evo-highlights">
-          <div class="evo-highlight">
+        <div class="showcase-features">
+          <div class="showcase-feat">
             <span class="icon blue">1</span>
             <span><strong>Analyze</strong> &mdash; Scan the codebase for gaps, missing features, or improvement opportunities.</span>
           </div>
-          <div class="evo-highlight">
+          <div class="showcase-feat">
             <span class="icon green">2</span>
             <span><strong>Implement</strong> &mdash; Write code, add tests, create new tools or middleware components.</span>
           </div>
-          <div class="evo-highlight">
+          <div class="showcase-feat">
             <span class="icon purple">3</span>
             <span><strong>Validate</strong> &mdash; Run the full test suite. Only passing rounds get merged.</span>
           </div>
         </div>
+        <a href="https://github.com/nanoAgentTeam/nano_agent_team_selfevolve" class="showcase-link" target="_blank">
+          View on GitHub &rarr;
+        </a>
       </div>
       <div class="terminal">
         <div class="terminal-header">
