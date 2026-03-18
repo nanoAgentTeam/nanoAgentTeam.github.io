@@ -579,6 +579,181 @@
 
     .footer-links a:hover { color: var(--accent); }
 
+    /* ── HERO VIDEO ── */
+    .hero-video {
+      max-width: 800px;
+      margin: 48px auto 0;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+
+    .hero-video video {
+      width: 100%;
+      display: block;
+    }
+
+    .hero-video .placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+    }
+
+    .stats-grid {
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .stat-number.blue { color: var(--accent); }
+    .stat-number.green { color: var(--green); }
+    .stat-number.purple { color: var(--purple); }
+    .stat-number.orange { color: var(--orange); }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* ── SCREENSHOT GALLERY ── */
+    .screenshot-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .screenshot-tabs button {
+      flex: 1;
+      background: none;
+      border: none;
+      padding: 10px 12px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .screenshot-tabs button.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .screenshot-tabs button:hover { color: var(--text-primary); }
+
+    .screenshot-panel {
+      display: none;
+      background: var(--bg-primary);
+    }
+
+    .screenshot-panel.active { display: block; }
+
+    .screenshot-panel img {
+      width: 100%;
+      display: block;
+    }
+
+    .screenshot-gallery {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    /* ── EVOLUTION SESSIONS ── */
+    .evo-sessions {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .evo-session {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .evo-session-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .evo-session-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .evo-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .evo-badge.pass { background: rgba(74, 222, 128, 0.15); color: var(--green); }
+    .evo-badge.ongoing { background: rgba(167, 139, 250, 0.15); color: var(--purple); }
+
+    .evo-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .evo-feat {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .evo-date {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .evo-ongoing-note {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-style: italic;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -587,6 +762,9 @@
       .showcase-content, .showcase-content.reverse { grid-template-columns: 1fr; direction: ltr; gap: 40px; }
       .team-grid { grid-template-columns: repeat(2, 1fr); }
       .nav-github { padding: 6px 12px; font-size: 13px; }
+      .stats-grid { gap: 32px; }
+      .stat-number { font-size: 28px; }
+      .hero-video .placeholder { height: 220px; }
     }
 
     html { scroll-behavior: smooth; }
@@ -643,6 +821,33 @@
         All Projects
       </a>
     </div>
+    <div class="hero-video">
+      <div class="placeholder">[ demo video &mdash; coming soon ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number blue">30+</div>
+        <div class="stat-label">Built-in Tools</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number green">13</div>
+        <div class="stat-label">Skills &amp; Templates</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number purple">7</div>
+        <div class="stat-label">Radar Jobs</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number orange">4</div>
+        <div class="stat-label">IM Channels</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -682,22 +887,35 @@
           View on GitHub &rarr;
         </a>
       </div>
-      <div class="chat-mockup">
-        <div class="terminal-header">
-          <div class="terminal-dot red"></div>
-          <div class="terminal-dot yellow"></div>
-          <div class="terminal-dot green"></div>
+      <div class="screenshot-gallery">
+        <div class="screenshot-tabs">
+          <button class="active" onclick="switchTab(this, 'tab-webui')">Web UI</button>
+          <button onclick="switchTab(this, 'tab-cli')">CLI</button>
+          <button onclick="switchTab(this, 'tab-auto')">Automation</button>
+          <button onclick="switchTab(this, 'tab-task')">Task Mode</button>
         </div>
-        <div class="chat-body">
-          <div class="chat-msg user">Create a paper project "MoE-Survey" for ICML 2026.</div>
-          <div class="chat-msg bot"><span class="status">&#x2713;</span> Project created with ICML 2026 template. Deadline tracked: Jan 30, 2026.</div>
-          <div class="chat-msg user">Search for recent MoE papers and draft the introduction.</div>
-          <div class="chat-msg bot">Searching arXiv &amp; Semantic Scholar... found 23 papers. Drafting intro... <span class="status">&#x2713;</span> Compiled successfully.</div>
-          <div class="chat-msg bot" style="border-left:2px solid var(--orange);margin-top:4px;font-size:12px;color:var(--text-muted);">&#x1f4e8; Daily digest: 3 new MoE papers on arXiv today. ICML deadline in 12 days.</div>
-          <div class="chat-msg user">/sync push</div>
-          <div class="chat-msg bot"><span class="status">&#x2713;</span> Pushed 3 files to Overleaf.</div>
+        <div id="tab-webui" class="screenshot-panel active">
+          <img src="https://raw.githubusercontent.com/nanoAgentTeam/research-claw/main/README/images/webui_en.png" alt="Web UI" loading="lazy">
+        </div>
+        <div id="tab-cli" class="screenshot-panel">
+          <img src="https://raw.githubusercontent.com/nanoAgentTeam/research-claw/main/README/images/cli_en.png" alt="CLI" loading="lazy">
+        </div>
+        <div id="tab-auto" class="screenshot-panel">
+          <img src="https://raw.githubusercontent.com/nanoAgentTeam/research-claw/main/README/images/auto_en.png" alt="Automation" loading="lazy">
+        </div>
+        <div id="tab-task" class="screenshot-panel">
+          <img src="https://raw.githubusercontent.com/nanoAgentTeam/research-claw/main/README/images/task_en.png" alt="Task Mode" loading="lazy">
         </div>
       </div>
+<script>
+function switchTab(btn, panelId) {
+  btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  var gallery = btn.closest('.screenshot-gallery');
+  gallery.querySelectorAll('.screenshot-panel').forEach(p => p.classList.remove('active'));
+  gallery.querySelector('#' + panelId).classList.add('active');
+}
+</script>
     </div>
   </div>
 </section>
@@ -785,29 +1003,40 @@
           View on GitHub &rarr;
         </a>
       </div>
-      <div class="terminal">
-        <div class="terminal-header">
-          <div class="terminal-dot red"></div>
-          <div class="terminal-dot yellow"></div>
-          <div class="terminal-dot green"></div>
+      <div class="evo-sessions">
+        <div class="evo-session">
+          <div class="evo-session-header">
+            <div>
+              <div class="evo-session-title">Session 20260311</div>
+              <div class="evo-date">Mar 11, 2026 &mdash; 5 rounds, all PASS</div>
+            </div>
+            <span class="evo-badge pass">5/5 Pass</span>
+          </div>
+          <div class="evo-features">
+            <span class="evo-feat">ArxivSearchTool</span>
+            <span class="evo-feat">CodeAnalysisTool</span>
+            <span class="evo-feat">MarkdownExportTool</span>
+            <span class="evo-feat">TokenUsageTracker</span>
+            <span class="evo-feat">HealthMetrics</span>
+          </div>
         </div>
-        <div class="terminal-body">
-          <div><span class="prompt">$</span> <span class="cmd">bash evolve.sh 10</span></div>
-          <div><span class="comment"># self-evolution loop: 10 rounds</span></div>
-          <div>&nbsp;</div>
-          <div><span class="output">[R1]</span> Gap: no dependency analysis</div>
-          <div><span class="output">[R1]</span> +DependencyParser +health metrics</div>
-          <div><span class="output">[R1]</span> Tests: <span style="color:var(--green)">PASS</span> &rarr; branch evolution/r1</div>
-          <div>&nbsp;</div>
-          <div><span class="output">[R2]</span> Gap: no session export</div>
-          <div><span class="output">[R2]</span> +SessionExportTool (JSON/Markdown)</div>
-          <div><span class="output">[R2]</span> Tests: <span style="color:var(--green)">PASS</span> &rarr; branch evolution/r2</div>
-          <div>&nbsp;</div>
-          <div><span class="output">[R3]</span> Gap: no agent decision tracing</div>
-          <div><span class="output">[R3]</span> +DecisionTraceExplorer +/trace</div>
-          <div><span class="output">[R3]</span> Tests: <span style="color:var(--green)">PASS</span> &rarr; branch evolution/r3</div>
-          <div>&nbsp;</div>
-          <div><span class="comment"># agents evolving themselves...</span></div>
+        <div class="evo-session">
+          <div class="evo-session-header">
+            <div>
+              <div class="evo-session-title">Session 20260315</div>
+              <div class="evo-date">Mar 15, 2026 &mdash; 9 rounds</div>
+            </div>
+            <span class="evo-badge pass">Pass</span>
+          </div>
+          <div class="evo-features">
+            <span class="evo-feat">AgentMonitorTool</span>
+            <span class="evo-feat">SelfDiagnosis</span>
+            <span class="evo-feat">SessionReplayTool</span>
+            <span class="evo-feat">DiagnosisTool</span>
+          </div>
+        </div>
+        <div class="evo-ongoing-note">
+          More sessions on the way &mdash; experiments are ongoing.
         </div>
       </div>
     </div>
