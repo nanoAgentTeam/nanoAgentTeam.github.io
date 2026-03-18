@@ -3,8 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>nanoAgentTeam</title>
-  <meta name="description" content="Building lightweight multi-agent systems and AI-powered research tools.">
+  <title>nanoAgentTeam — AI Agent Research & Tools</title>
+  <meta name="description" content="Exploring the frontier of AI agents. Building practical tools for academic research, multi-agent collaboration, and autonomous self-evolution.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="nanoAgentTeam">
+  <meta property="og:description" content="Exploring the frontier of AI agents. Building practical tools for academic research, multi-agent collaboration, and autonomous self-evolution.">
+  <meta property="og:url" content="https://nanoagentteam.github.io">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="nanoAgentTeam">
+  <meta name="twitter:description" content="Exploring the frontier of AI agents. Building practical tools for academic research, multi-agent collaboration, and autonomous self-evolution.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦀</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -115,6 +123,48 @@
     .nav-github:hover {
       border-color: var(--accent);
       background: var(--bg-card-hover);
+    }
+
+    /* ── MOBILE MENU ── */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--text-secondary);
+    }
+
+    .menu-toggle svg { display: block; }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(10, 14, 23, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mobile-menu a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 8px 0;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--accent); }
+
+    .mobile-menu.open { display: flex; }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
     }
 
     /* ── HERO ── */
@@ -536,6 +586,7 @@
       section { padding: 60px 0; }
       .showcase-content, .showcase-content.reverse { grid-template-columns: 1fr; direction: ltr; gap: 40px; }
       .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-github { padding: 6px 12px; font-size: 13px; }
     }
 
     html { scroll-behavior: smooth; }
@@ -553,12 +604,23 @@
       <a href="#evolution">Evolution</a>
       <a href="#team">Team</a>
     </div>
-    <a href="https://github.com/nanoAgentTeam" class="nav-github" target="_blank">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-      GitHub
-    </a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="https://github.com/nanoAgentTeam" class="nav-github" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <button class="menu-toggle" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
+<div id="mobile-menu" class="mobile-menu">
+  <a href="#projects" onclick="this.parentElement.classList.remove('open')">Research Claw</a>
+  <a href="#framework" onclick="this.parentElement.classList.remove('open')">Framework</a>
+  <a href="#evolution" onclick="this.parentElement.classList.remove('open')">Evolution</a>
+  <a href="#team" onclick="this.parentElement.classList.remove('open')">Team</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -608,8 +670,12 @@
             <span><strong>Sync</strong> &mdash; Two-way Overleaf sync, Git version control, multi-device access.</span>
           </div>
           <div class="showcase-feat">
-            <span class="icon orange">&#x1f4ac;</span>
-            <span><strong>Chat</strong> &mdash; CLI, Web UI, Telegram, Feishu, DingTalk, QQ &mdash; talk to it on any channel.</span>
+            <span class="icon orange">&#x23f0;</span>
+            <span><strong>Track</strong> &mdash; Conference deadline tracking, daily arXiv scanning, and push notifications to keep you on top of things.</span>
+          </div>
+          <div class="showcase-feat">
+            <span class="icon blue">&#x1f4ac;</span>
+            <span><strong>Chat</strong> &mdash; CLI, Telegram, Feishu &mdash; talk to it on any channel you prefer.</span>
           </div>
         </div>
         <a href="https://github.com/nanoAgentTeam/research-claw" class="showcase-link" target="_blank">
@@ -623,10 +689,11 @@
           <div class="terminal-dot green"></div>
         </div>
         <div class="chat-body">
-          <div class="chat-msg user">Create a paper project "MoE-Survey" and link it to Overleaf.</div>
-          <div class="chat-msg bot"><span class="status">&#x2713;</span> Project created. Overleaf linked. Switched to MoE-Survey.</div>
-          <div class="chat-msg user">Research the latest MoE papers and draft an introduction.</div>
-          <div class="chat-msg bot">Searching arXiv... found 23 relevant papers. Writing introduction... <span class="status">&#x2713;</span> Compiled successfully.</div>
+          <div class="chat-msg user">Create a paper project "MoE-Survey" for ICML 2026.</div>
+          <div class="chat-msg bot"><span class="status">&#x2713;</span> Project created with ICML 2026 template. Deadline tracked: Jan 30, 2026.</div>
+          <div class="chat-msg user">Search for recent MoE papers and draft the introduction.</div>
+          <div class="chat-msg bot">Searching arXiv &amp; Semantic Scholar... found 23 papers. Drafting intro... <span class="status">&#x2713;</span> Compiled successfully.</div>
+          <div class="chat-msg bot" style="border-left:2px solid var(--orange);margin-top:4px;font-size:12px;color:var(--text-muted);">&#x1f4e8; Daily digest: 3 new MoE papers on arXiv today. ICML deadline in 12 days.</div>
           <div class="chat-msg user">/sync push</div>
           <div class="chat-msg bot"><span class="status">&#x2713;</span> Pushed 3 files to Overleaf.</div>
         </div>
