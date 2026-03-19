@@ -1038,23 +1038,15 @@
           View on GitHub &rarr;
         </a>
       </div>
-      <div class="terminal">
-        <div class="terminal-header">
-          <div class="terminal-dot red"></div>
-          <div class="terminal-dot yellow"></div>
-          <div class="terminal-dot green"></div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer;" class="expandable-video">
+          <video id="frameworkVideo" autoplay loop muted playsinline style="width:100%;display:block;">
+            <source src="assets/nano-agent-team-demo.mp4" type="video/mp4">
+          </video>
         </div>
-        <div class="terminal-body">
-          <div><span class="prompt">$</span> <span class="cmd">python main.py "Analyze this repo"</span></div>
-          <div>&nbsp;</div>
-          <div><span class="output">[Coordinator]</span> Delegating to team...</div>
-          <div><span class="output">[Researcher]</span> Scanning project structure</div>
-          <div><span class="output">[Researcher]</span> Found 12 modules, 3 entry points</div>
-          <div><span class="output">[Analyst]</span> Running dependency analysis</div>
-          <div><span class="output">[Analyst]</span> No circular deps detected</div>
-          <div><span class="output">[Writer]</span> Generating summary report...</div>
-          <div>&nbsp;</div>
-          <div><span class="comment"># agents collaborating in real-time</span></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.7;color:var(--text-secondary);">
+          <div style="font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Query</div>
+          Build a terminal-based 'Developer Survival Simulator' &mdash; a text adventure game where the player is a junior dev surviving their first week at a startup. Include: 1) An event engine with 20+ random events 2) A stat system tracking Energy, Code Quality, Boss Satisfaction, and Sanity 3) A decision system where the player picks from 2-3 options per event 4) A Rich-powered terminal UI with live stat bars, event log, and ASCII art 5) A game-over/victory condition (survive 5 days or get fired) 6) Unit tests for the event engine and stat system.
         </div>
       </div>
     </div>
@@ -1208,9 +1200,7 @@
 <div class="video-modal" id="videoModal">
   <div class="video-modal-inner">
     <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
-    <video id="modalVideo" controls playsinline>
-      <source src="assets/research-claw-demo.mp4" type="video/mp4">
-    </video>
+    <video id="modalVideo" controls playsinline></video>
   </div>
 </div>
 
@@ -1218,13 +1208,25 @@
 (function() {
   var modal = document.getElementById('videoModal');
   var modalVideo = document.getElementById('modalVideo');
+  var modalInner = document.querySelector('.video-modal-inner');
   var phoneVideo = document.querySelector('.phone-demo video');
+  var frameworkVideo = document.getElementById('frameworkVideo');
 
-  phoneVideo.addEventListener('click', function() {
-    modalVideo.currentTime = phoneVideo.currentTime;
+  function openModal(sourceVideo, maxWidth) {
+    modalInner.style.maxWidth = maxWidth;
+    modalVideo.src = sourceVideo.querySelector('source').src;
+    modalVideo.currentTime = sourceVideo.currentTime;
     modal.classList.add('open');
     modalVideo.play();
     document.body.style.overflow = 'hidden';
+  }
+
+  phoneVideo.addEventListener('click', function() {
+    openModal(phoneVideo, '400px');
+  });
+
+  frameworkVideo.addEventListener('click', function() {
+    openModal(frameworkVideo, '900px');
   });
 
   modal.addEventListener('click', function(e) {
@@ -1241,6 +1243,7 @@ function closeVideoModal() {
   var modalVideo = document.getElementById('modalVideo');
   modal.classList.remove('open');
   modalVideo.pause();
+  modalVideo.removeAttribute('src');
   document.body.style.overflow = '';
 }
 </script>
