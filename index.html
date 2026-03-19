@@ -594,6 +594,94 @@
       display: block;
     }
 
+    /* ── PHONE DEMO ── */
+    .showcase-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .phone-demo {
+      max-width: 320px;
+      margin: 0 auto;
+      border-radius: 20px;
+      border: 2px solid var(--border);
+      overflow: hidden;
+      background: #000;
+    }
+
+    .phone-demo video {
+      width: 100%;
+      display: block;
+      cursor: pointer;
+    }
+
+    .phone-demo::after {
+      content: 'Click to expand';
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(255,255,255,0.7);
+      background: rgba(0,0,0,0.6);
+      padding: 4px 12px;
+      border-radius: 100px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .phone-demo { position: relative; }
+
+    .phone-demo:hover::after { opacity: 1; }
+
+    /* ── VIDEO MODAL ── */
+    .video-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-modal.open { display: flex; }
+
+    .video-modal-inner {
+      position: relative;
+      max-width: 400px;
+      width: 90%;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      background: #000;
+    }
+
+    .video-modal-inner video {
+      width: 100%;
+      display: block;
+    }
+
+    .video-modal-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 28px;
+      cursor: pointer;
+      padding: 4px 8px;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .video-modal-close:hover { color: #fff; }
+
     .hero-video .placeholder {
       display: flex;
       align-items: center;
@@ -683,6 +771,37 @@
       border-radius: var(--radius);
       overflow: hidden;
     }
+
+    .screenshot-panel.video-panel.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #000;
+    }
+
+    .screenshot-panel.video-panel video {
+      max-height: 500px;
+      width: auto;
+      max-width: 100%;
+    }
+
+    .demo-meta {
+      width: 100%;
+      padding: 10px 16px;
+      background: var(--bg-card);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 2;
+    }
+
+    .demo-meta a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .demo-meta a:hover { text-decoration: underline; }
 
     /* ── EVOLUTION SESSIONS ── */
     .evo-sessions {
@@ -821,79 +940,68 @@
         All Projects
       </a>
     </div>
-    <div class="hero-video">
-      <video autoplay loop muted playsinline>
-        <source src="https://github.com/user-attachments/assets/fccb837c-cfc5-4063-b803-2ae900fb4a20" type="video/mp4">
-      </video>
-    </div>
   </div>
 </section>
 
 <!-- ═══ PROJECT: Research Claw ═══ -->
 <section id="projects" class="showcase">
   <div class="container">
+    <!-- Phone demo (left) + Text (right) -->
     <div class="showcase-content">
       <div class="showcase-text">
         <span class="showcase-tag app">Application</span>
         <h2 class="section-title">Research Claw</h2>
         <p class="section-desc">
-          Your personal AI research assistant. Manages LaTeX projects, syncs with Overleaf, searches literature, tracks conference deadlines &mdash; and responds wherever you are.
+          A self-hosted AI assistant for academic research &mdash; manages your papers, searches literature, tracks deadlines, and answers you on the channels you already use.
         </p>
         <div class="showcase-features">
           <div class="showcase-feat">
             <span class="icon green">&#x270e;</span>
-            <span><strong>Write</strong> &mdash; Create and manage LaTeX projects with AI-assisted drafting and compilation.</span>
+            <span><strong>Writing &amp; Compilation</strong> &mdash; Chat-driven LaTeX editing, one-command compile with auto-diagnosis, built-in venue skills (NeurIPS, ICML, ICLR, ACL, CVPR&hellip;).</span>
           </div>
           <div class="showcase-feat">
-            <span class="icon blue">&#x1f50d;</span>
-            <span><strong>Research</strong> &mdash; Search arXiv and literature databases, auto-generate citations and related work.</span>
+            <span class="icon blue">&#x1f504;</span>
+            <span><strong>Overleaf &amp; Git</strong> &mdash; Bidirectional sync, every AI edit auto-committed, instant rollback.</span>
           </div>
           <div class="showcase-feat">
-            <span class="icon purple">&#x1f504;</span>
-            <span><strong>Sync</strong> &mdash; Two-way Overleaf sync, Git version control, multi-device access.</span>
+            <span class="icon purple">&#x1f3ad;</span>
+            <span><strong>Multi-Agent Collaboration</strong> &mdash; Sub-agents in isolated sandboxes; <code>/task</code> decomposes goals into a DAG and runs in parallel.</span>
           </div>
           <div class="showcase-feat">
-            <span class="icon orange">&#x23f0;</span>
-            <span><strong>Track</strong> &mdash; Conference deadline tracking, daily arXiv scanning, and push notifications to keep you on top of things.</span>
+            <span class="icon orange">&#x1f50d;</span>
+            <span><strong>Literature Search</strong> &mdash; arXiv, PubMed, OpenAlex with full-text PDF reading.</span>
           </div>
           <div class="showcase-feat">
-            <span class="icon blue">&#x1f4ac;</span>
-            <span><strong>Chat</strong> &mdash; CLI, Telegram, Feishu &mdash; talk to it on any channel you prefer.</span>
+            <span class="icon green">&#x1f4e1;</span>
+            <span><strong>Research Radar</strong> &mdash; Daily scans, weekly digests, deadline alerts &mdash; pushed to Telegram, Feishu, Email, or any Apprise channel.</span>
+          </div>
+          <div class="showcase-feat">
+            <span class="icon blue">&#x1f9e0;</span>
+            <span><strong>Memory &amp; Context</strong> &mdash; Project-level memory across sessions with automated summarization.</span>
+          </div>
+          <div class="showcase-feat">
+            <span class="icon purple">&#x1f4ac;</span>
+            <span><strong>Access Anywhere</strong> &mdash; Web UI, CLI, Feishu, Telegram, QQ, DingTalk &mdash; no public IP required.</span>
           </div>
         </div>
         <a href="https://github.com/nanoAgentTeam/research-claw" class="showcase-link" target="_blank">
           View on GitHub &rarr;
         </a>
       </div>
-      <div class="screenshot-gallery">
-        <div class="screenshot-tabs">
-          <button class="active" onclick="switchTab(this, 'tab-webui')">Web UI</button>
-          <button onclick="switchTab(this, 'tab-cli')">CLI</button>
-          <button onclick="switchTab(this, 'tab-auto')">Automation</button>
-          <button onclick="switchTab(this, 'tab-task')">Task Mode</button>
+      <div style="text-align:center;">
+        <div class="phone-demo">
+          <video autoplay loop muted playsinline>
+            <source src="assets/research-claw-demo.mp4" type="video/mp4">
+          </video>
         </div>
-        <div id="tab-webui" class="screenshot-panel active">
-          <img src="https://raw.githubusercontent.com/nanoAgentTeam/research-claw/main/README/images/webui_en.png" alt="Web UI" loading="lazy">
-        </div>
-        <div id="tab-cli" class="screenshot-panel">
-          <img src="https://raw.githubusercontent.com/nanoAgentTeam/research-claw/main/README/images/cli_en.png" alt="CLI" loading="lazy">
-        </div>
-        <div id="tab-auto" class="screenshot-panel">
-          <img src="https://raw.githubusercontent.com/nanoAgentTeam/research-claw/main/README/images/auto_en.png" alt="Automation" loading="lazy">
-        </div>
-        <div id="tab-task" class="screenshot-panel">
-          <img src="https://raw.githubusercontent.com/nanoAgentTeam/research-claw/main/README/images/task_en.png" alt="Task Mode" loading="lazy">
-        </div>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:12px;line-height:1.8;">
+          Mobile demo &middot; Executed by GLM-5<br>
+          Papers generated:
+          <a href="assets/Agent_survey.pdf" target="_blank" style="color:var(--accent);text-decoration:none;">LLM-Based Autonomous Agents Survey</a> &middot;
+          <a href="assets/toolCLIP.pdf" target="_blank" style="color:var(--accent);text-decoration:none;">ToolCLIP</a>
+        </p>
       </div>
-<script>
-function switchTab(btn, panelId) {
-  btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  var gallery = btn.closest('.screenshot-gallery');
-  gallery.querySelectorAll('.screenshot-panel').forEach(p => p.classList.remove('active'));
-  gallery.querySelector('#' + panelId).classList.add('active');
-}
-</script>
+    </div>
     </div>
   </div>
 </section>
@@ -906,24 +1014,25 @@ function switchTab(btn, panelId) {
         <span class="showcase-tag framework">Framework</span>
         <h2 class="section-title">nano_agent_team</h2>
         <p class="section-desc">
-          A lightweight multi-agent collaboration framework born from our research. A testbed for exploring agent orchestration, tool use, inter-agent communication, and autonomous workflows.
+          Multi-agent collaboration built on the Blackboard Model. No database, no message queue &mdash; agents share state through structured Markdown files on the file system, version-controlled and human-readable.
         </p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;">Design Principles</div>
         <div class="showcase-features">
           <div class="showcase-feat">
-            <span class="icon blue">&#x1f3ad;</span>
-            <span><strong>Agent Teams</strong> &mdash; Define specialized agents with roles, then let them collaborate on complex tasks.</span>
+            <span class="icon blue">&#x1f4cb;</span>
+            <span><strong>Protocol as Data</strong> &mdash; Use self-describing Markdown files as communication protocols instead of hard-coded APIs.</span>
           </div>
           <div class="showcase-feat">
-            <span class="icon green">&#x1f527;</span>
-            <span><strong>Tool Registry</strong> &mdash; Modular tool system with auto-discovery. Easy to add, easy to extend.</span>
+            <span class="icon green">&#x1f4c2;</span>
+            <span><strong>Files as Database</strong> &mdash; Purely file-system based, no extra database required.</span>
           </div>
           <div class="showcase-feat">
             <span class="icon purple">&#x1f300;</span>
-            <span><strong>Middleware</strong> &mdash; Pluggable pipeline for logging, routing, guardrails, and custom logic between agents.</span>
+            <span><strong>Dynamic Self-Organization</strong> &mdash; The Watchdog agent analyzes tasks, plans the blackboard structure, and spawns/coordinates Worker agents.</span>
           </div>
           <div class="showcase-feat">
-            <span class="icon orange">&#x1f5a5;</span>
-            <span><strong>Terminal UI</strong> &mdash; Rich TUI with slash commands, live monitoring, session management, and interactive debugging.</span>
+            <span class="icon orange">&#x1f441;</span>
+            <span><strong>Human-in-the-Loop</strong> &mdash; Monitor and intervene in agent execution through the TUI.</span>
           </div>
         </div>
         <a href="https://github.com/zczc/nano_agent_team" class="showcase-link" target="_blank">
@@ -1095,6 +1204,47 @@ function switchTab(btn, panelId) {
     </div>
   </div>
 </footer>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+    <video id="modalVideo" controls playsinline>
+      <source src="assets/research-claw-demo.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<script>
+(function() {
+  var modal = document.getElementById('videoModal');
+  var modalVideo = document.getElementById('modalVideo');
+  var phoneVideo = document.querySelector('.phone-demo video');
+
+  phoneVideo.addEventListener('click', function() {
+    modalVideo.currentTime = phoneVideo.currentTime;
+    modal.classList.add('open');
+    modalVideo.play();
+    document.body.style.overflow = 'hidden';
+  });
+
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeVideoModal();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeVideoModal();
+  });
+})();
+
+function closeVideoModal() {
+  var modal = document.getElementById('videoModal');
+  var modalVideo = document.getElementById('modalVideo');
+  modal.classList.remove('open');
+  modalVideo.pause();
+  document.body.style.overflow = '';
+}
+</script>
 
 </body>
 </html>
