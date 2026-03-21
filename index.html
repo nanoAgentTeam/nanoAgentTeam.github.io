@@ -989,31 +989,48 @@
         </a>
       </div>
       <div style="text-align:center;">
-        <div class="phone-demo">
-          <video autoplay loop muted playsinline>
-            <source src="assets/research-claw-demo.mp4" type="video/mp4">
-          </video>
+        <div style="display:inline-flex;gap:0;margin-bottom:16px;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+          <button onclick="switchDemo('en')" id="demo-tab-en" style="padding:6px 18px;font-size:12px;font-family:'Inter',sans-serif;border:none;cursor:pointer;background:var(--accent);color:var(--bg-primary);font-weight:600;transition:all .2s;">English</button>
+          <button onclick="switchDemo('zh')" id="demo-tab-zh" style="padding:6px 18px;font-size:12px;font-family:'Inter',sans-serif;border:none;cursor:pointer;background:var(--bg-card);color:var(--text-secondary);font-weight:500;transition:all .2s;">中文</button>
         </div>
-        <p style="font-size:12px;color:var(--text-muted);margin-top:12px;line-height:1.8;">
-          Mobile demo (Chinese) &middot; Executed by GLM-5<br>
-          Papers generated:
-          <a href="assets/Agent_survey.pdf" target="_blank" style="color:var(--accent);text-decoration:none;">LLM-Based Autonomous Agents Survey</a> &middot;
-          <a href="assets/toolCLIP.pdf" target="_blank" style="color:var(--accent);text-decoration:none;">ToolCLIP</a>
-        </p>
-      </div>
-      <div style="text-align:center;margin-top:32px;">
-        <div class="phone-demo">
-          <video autoplay loop muted playsinline>
-            <source src="assets/research-claw-demo-en.mp4" type="video/mp4">
-          </video>
+        <div id="demo-en">
+          <div class="phone-demo">
+            <video autoplay loop muted playsinline>
+              <source src="assets/research-claw-demo-en.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:12px;line-height:1.8;">
+            Mobile demo (English) &middot; Executed by GLM-5<br>
+            Papers generated:
+            <a href="assets/autonomous-multi-agent-survey.pdf" target="_blank" style="color:var(--accent);text-decoration:none;">LLM-Based Autonomous Multi-Agent Systems Survey</a> &middot;
+            <a href="assets/hierarchical-memory-mas.pdf" target="_blank" style="color:var(--accent);text-decoration:none;">Hierarchical Memory Sharing in MAS</a>
+          </p>
         </div>
-        <p style="font-size:12px;color:var(--text-muted);margin-top:12px;line-height:1.8;">
-          Mobile demo (English) &middot; Executed by GLM-5<br>
-          Papers generated:
-          <a href="assets/autonomous-multi-agent-survey.pdf" target="_blank" style="color:var(--accent);text-decoration:none;">LLM-Based Autonomous Multi-Agent Systems Survey</a> &middot;
-          <a href="assets/hierarchical-memory-mas.pdf" target="_blank" style="color:var(--accent);text-decoration:none;">Hierarchical Memory Sharing in MAS</a>
-        </p>
+        <div id="demo-zh" style="display:none;">
+          <div class="phone-demo">
+            <video autoplay loop muted playsinline>
+              <source src="assets/research-claw-demo.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:12px;line-height:1.8;">
+            Mobile demo (中文) &middot; Executed by GLM-5<br>
+            Papers generated:
+            <a href="assets/Agent_survey.pdf" target="_blank" style="color:var(--accent);text-decoration:none;">LLM-Based Autonomous Agents Survey</a> &middot;
+            <a href="assets/toolCLIP.pdf" target="_blank" style="color:var(--accent);text-decoration:none;">ToolCLIP</a>
+          </p>
+        </div>
       </div>
+      <script>
+      function switchDemo(lang) {
+        document.getElementById('demo-en').style.display = lang === 'en' ? '' : 'none';
+        document.getElementById('demo-zh').style.display = lang === 'zh' ? '' : 'none';
+        var enTab = document.getElementById('demo-tab-en'), zhTab = document.getElementById('demo-tab-zh');
+        enTab.style.background = lang === 'en' ? 'var(--accent)' : 'var(--bg-card)';
+        enTab.style.color = lang === 'en' ? 'var(--bg-primary)' : 'var(--text-secondary)';
+        zhTab.style.background = lang === 'zh' ? 'var(--accent)' : 'var(--bg-card)';
+        zhTab.style.color = lang === 'zh' ? 'var(--bg-primary)' : 'var(--text-secondary)';
+      }
+      </script>
     </div>
   </div>
 </section>
